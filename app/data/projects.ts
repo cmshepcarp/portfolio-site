@@ -29,7 +29,7 @@ export const projects = [
     slug: "exec-reporting-pbi-model",
     title: "Executive Reporting Model & Dashboards",
     impact:
-      "Served as POC for $32k contractor build; mapped data and designed dashboards for leadership.",
+      "Served as POC for contractor build; mapped data and designed dashboards for leadership.",
     tags: ["Data Modeling", "Power BI", "Stakeholder Mgmt"],
     bullets: [
       "Owned metric definitions and acceptance criteria",

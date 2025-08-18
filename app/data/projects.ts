@@ -1,7 +1,7 @@
 export const projects = [
   {
-    slug: "neworg-etl-python-sql-powerbi",
-    title: "NewOrg → SQL → Power BI: Weekly ETL + QA",
+    slug: "CRM-etl-python-sql-powerbi",
+    title: "CRO → SQL → Power BI: Weekly ETL + QA",
     impact:
       "Cut quarterly reporting time from 140 → 80 hours by refactoring data model and automating extracts.",
     tags: ["Python", "SQL", "Power BI", "ETL", "Automation"],

@@ -1,7 +1,9 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+// Load fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -12,24 +14,61 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Site-wide metadata
 export const metadata: Metadata = {
   title: "Caleb Carpenter Portfolio",
   description: "Data Analyst Portfolio showcasing dashboards, automation, and data solutions.",
-  icons: {
-    icon: "/tablogo.png", // <-- your CMSC logo file in /public
+  keywords: [
+    "Data Analyst",
+    "Portfolio",
+    "Dashboards",
+    "Automation",
+    "Power BI",
+    "Python",
+    "SQL",
+    "ETL",
+    "Caleb Carpenter",
+  ],
+  authors: [{ name: "Caleb Carpenter" }],
+  icons: [
+    { rel: "icon", url: "/favicon.ico" }, // fallback
+    { rel: "icon", url: "/tablogo.png?v=2", type: "image/png" }, // CMSC logo
+    { rel: "shortcut icon", url: "/favicon.ico" },
+  ],
+  openGraph: {
+    title: "Caleb Carpenter Portfolio",
+    description: "Dashboards, automation, and data solutions — selected projects and case studies.",
+    url: "https://calebcarpenter.com",
+    siteName: "Caleb Carpenter Portfolio",
+    images: [
+      {
+        url: "/og-image.png", // put in /public if you want previews on LinkedIn/Twitter
+        width: 1200,
+        height: 630,
+        alt: "Caleb Carpenter Portfolio preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Caleb Carpenter Portfolio",
+    description: "Dashboards, automation, and data solutions — selected projects and case studies.",
+    images: ["/og-image.png"],
+  },
+  metadataBase: new URL("https://calebcarpenter.com"),
 };
 
+// Root layout — must export a default React component
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>

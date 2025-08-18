@@ -1,103 +1,228 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { profile } from "./data/profile";
+import { highlights } from "./data/highlights";
+import { skills } from "./data/skills";
+import { projects } from "./data/projects";
+
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  Download,
+  Github,
+  Linkedin,
+  ExternalLink,
+  ArrowRight,
+  Database,
+  BarChart,
+  Workflow,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Small UI helpers
+// ─────────────────────────────────────────────────────────────────────────────
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <section className="max-w-6xl mx-auto px-4 md:px-8 py-12">
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6">
+        {title}
+      </h2>
+      {children}
+    </section>
+  );
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="text-center p-4">
+      <div className="text-3xl md:text-4xl font-bold">{value}</div>
+      <div className="text-sm opacity-70 mt-1">{label}</div>
+    </div>
+  );
+}
+
+function ProjectCard({ p }: { p: (typeof projects)[number] }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
+      <Card className="rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+        <CardContent className="p-6">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h3 className="text-xl font-semibold mb-1">{p.title}</h3>
+              <p className="text-sm opacity-80 mb-3">{p.impact}</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {p.tags.map((t) => (
+                  <Badge key={t} variant="secondary" className="rounded-full">
+                    {t}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+            <a
+              href={p.link}
+              className="inline-flex items-center text-sm opacity-80 hover:opacity-100"
+            >
+              <span>Case study</span>
+              <ExternalLink className="w-4 h-4 ml-1" />
+            </a>
+          </div>
+          <ul className="list-disc pl-5 space-y-1 text-sm">
+            {p.bullets.map((b, i) => (
+              <li key={i} className="leading-relaxed">
+                {b}
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Page
+// ─────────────────────────────────────────────────────────────────────────────
+export default function CalebPortfolio() {
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
+      {/* HERO */}
+      <header className="max-w-6xl mx-auto px-4 md:px-8 pt-16 pb-10">
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs mb-4">
+            <span className="inline-flex items-center gap-1">
+              <Database className="w-3.5 h-3.5" />
+              Pipelines
+            </span>
+            <span>•</span>
+            <span className="inline-flex items-center gap-1">
+              <Workflow className="w-3.5 h-3.5" />
+              Automation
+            </span>
+            <span>•</span>
+            <span className="inline-flex items-center gap-1">
+              <BarChart className="w-3.5 h-3.5" />
+              Dashboards
+            </span>
+          </div>
+
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
+            {profile.name}
+          </h1>
+          <p className="text-lg md:text-xl mt-2 opacity-80">{profile.title}</p>
+          <p className="max-w-2xl mt-3 md:mt-4 opacity-90">{profile.tagline}</p>
+
+          <div className="flex flex-wrap items-center gap-3 mt-6">
+            <Button asChild className="rounded-2xl">
+              <a href={`mailto:${profile.email}`}>
+                <Mail className="w-4 h-4 mr-2" />
+                Email me
+              </a>
+            </Button>
+
+            <Button asChild variant="secondary" className="rounded-2xl">
+              <a href={profile.resumeUrl} target="_blank" rel="noreferrer">
+                <Download className="w-4 h-4 mr-2" />
+                Download résumé
+              </a>
+            </Button>
+
+            <a
+              href={profile.github}
+              className="inline-flex items-center text-sm opacity-80 hover:opacity-100"
+            >
+              <Github className="w-4 h-4 mr-1" />
+              GitHub
+            </a>
+
+            <a
+              href={profile.linkedin}
+              className="inline-flex items-center text-sm opacity-80 hover:opacity-100"
+            >
+              <Linkedin className="w-4 h-4 mr-1" />
+              LinkedIn
+            </a>
+          </div>
+        </motion.div>
+      </header>
+
+      {/* STATS */}
+      <Section title="Highlights">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {highlights.map((h) => (
+            <Card key={h.label} className="rounded-2xl">
+              <CardContent className="p-6">
+                <Stat label={h.label} value={h.value} />
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      {/* SKILLS */}
+      <Section title="Core Skills">
+        <div className="flex flex-wrap gap-2">
+          {skills.map((s) => (
+            <Badge key={s} variant="outline" className="rounded-full px-3 py-1 text-sm">
+              {s}
+            </Badge>
+          ))}
+        </div>
+      </Section>
+
+      {/* PROJECTS */}
+      <Section title="Selected Projects">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((p) => (
+            <ProjectCard key={p.slug} p={p} />
+          ))}
+        </div>
+        <div className="mt-6 text-right">
+          <a href="#" className="inline-flex items-center text-sm font-medium">
+            See all projects <ArrowRight className="w-4 h-4 ml-1" />
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </Section>
+
+      {/* EXPERIENCE */}
+      <Section title="Experience">
+        <Card className="rounded-2xl">
+          <CardContent className="p-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold">SafeNest — Data Integrity Specialist</h3>
+              <p className="opacity-80 text-sm">Oct 2022 – Present, Las Vegas, NV</p>
+              <ul className="list-disc pl-5 space-y-1 text-sm">
+                <li>
+                  Developed IT asset tracking system using Microsoft Lists, SharePoint, and Power Apps.
+                </li>
+                <li>
+                  Reduced quarterly reporting time from 140 to 80 hours by refactoring incident reports.
+                </li>
+                <li>Built automated ticketing for finance with notifications and oversight.</li>
+                <li>Created ETL dashboards integrating SQL pipelines with Power BI.</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+      </Section>
+
+      {/* FOOTER */}
+      <footer className="max-w-6xl mx-auto px-4 md:px-8 py-12 opacity-70 text-sm">
+        <p>&copy; {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
       </footer>
-    </div>
+    </main>
   );
 }

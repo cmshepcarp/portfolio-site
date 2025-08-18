@@ -1,30 +1,38 @@
+// app/page.tsx
 "use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+// data (already in your repo)
 import { profile } from "./data/profile";
 import { highlights } from "./data/highlights";
 import { skills } from "./data/skills";
 import { projects } from "./data/projects";
 
-import React from "react";
-import { motion } from "framer-motion";
+// ui
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Mail,
   Download,
   Github,
   Linkedin,
+  Database,
+  Workflow,
+  BarChart,
   ExternalLink,
   ArrowRight,
-  Database,
-  BarChart,
-  Workflow,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Small UI helpers
-// ─────────────────────────────────────────────────────────────────────────────
+/** Toggle the hero background.
+ *  - "image" uses /public/hero-bg.jpg
+ *  - "color" uses a gradient
+ */
+const HERO_BACKGROUND: "image" | "color" = "image";
+
+/* small helpers */
 function Section({
   title,
   children,
@@ -74,12 +82,15 @@ function ProjectCard({ p }: { p: (typeof projects)[number] }) {
             </div>
             <a
               href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center text-sm opacity-80 hover:opacity-100"
             >
               <span>Case study</span>
               <ExternalLink className="w-4 h-4 ml-1" />
             </a>
           </div>
+
           <ul className="list-disc pl-5 space-y-1 text-sm">
             {p.bullets.map((b, i) => (
               <li key={i} className="leading-relaxed">
@@ -93,73 +104,97 @@ function ProjectCard({ p }: { p: (typeof projects)[number] }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Page
-// ─────────────────────────────────────────────────────────────────────────────
-export default function CalebPortfolio() {
+export default function Page() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
-      {/* HERO */}
-      <header className="max-w-6xl mx-auto px-4 md:px-8 pt-16 pb-10">
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs mb-4">
-            <span className="inline-flex items-center gap-1">
-              <Database className="w-3.5 h-3.5" />
-              Pipelines
-            </span>
-            <span>•</span>
-            <span className="inline-flex items-center gap-1">
-              <Workflow className="w-3.5 h-3.5" />
-              Automation
-            </span>
-            <span>•</span>
-            <span className="inline-flex items-center gap-1">
-              <BarChart className="w-3.5 h-3.5" />
-              Dashboards
-            </span>
-          </div>
+    <main className="text-slate-900">
+      {/* ───────────── HERO ───────────── */}
+      <header
+        className={`relative h-[56vh] md:h-[68vh] lg:h-[76vh] text-white overflow-hidden ${
+          HERO_BACKGROUND === "color"
+            ? "bg-gradient-to-r from-slate-900 to-indigo-900"
+            : ""
+        }`}
+      >
+        {HERO_BACKGROUND === "image" && (
+          <>
+            <Image
+              src="/hero-bg.jpg"
+              alt="Background"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+            {/* overlay sits BELOW content */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/55 to-transparent z-0" />
+          </>
+        )}
 
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
-            {profile.name}
-          </h1>
-          <p className="text-lg md:text-xl mt-2 opacity-80">{profile.title}</p>
-          <p className="max-w-2xl mt-3 md:mt-4 opacity-90">{profile.tagline}</p>
+        {/* hero content sits ABOVE overlay */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-8 pt-28 pb-10">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/25 text-xs mb-4 bg-white/10 backdrop-blur-sm">
+              <span className="inline-flex items-center gap-1">
+                <Database className="w-3.5 h-3.5" /> Pipelines
+              </span>
+              <span>•</span>
+              <span className="inline-flex items-center gap-1">
+                <Workflow className="w-3.5 h-3.5" /> Automation
+              </span>
+              <span>•</span>
+              <span className="inline-flex items-center gap-1">
+                <BarChart className="w-3.5 h-3.5" /> Dashboards
+              </span>
+            </div>
 
-          <div className="flex flex-wrap items-center gap-3 mt-6">
-            <Button asChild className="rounded-2xl">
-              <a href={`mailto:${profile.email}`}>
-                <Mail className="w-4 h-4 mr-2" />
-                Email me
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight drop-shadow">
+              {profile.name}
+            </h1>
+            <p className="text-lg md:text-xl mt-2 opacity-90 drop-shadow">
+              {profile.title}
+            </p>
+            <p className="max-w-2xl mt-3 md:mt-4 opacity-90 drop-shadow">
+              {profile.tagline}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-3 mt-6">
+              <Button asChild className="rounded-2xl">
+                <a href={`mailto:${profile.email}`}>
+                  <Mail className="w-4 h-4 mr-2" />
+                  Email me
+                </a>
+              </Button>
+
+              <Button asChild variant="secondary" className="rounded-2xl">
+                <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer">
+                  <Download className="w-4 h-4 mr-2" />
+                  Download résumé
+                </a>
+              </Button>
+
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-sm opacity-90 hover:opacity-100"
+              >
+                <Github className="w-4 h-4 mr-1" /> GitHub
               </a>
-            </Button>
 
-            <Button asChild variant="secondary" className="rounded-2xl">
-              <a href={profile.resumeUrl} target="_blank" rel="noreferrer">
-                <Download className="w-4 h-4 mr-2" />
-                Download résumé
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-sm opacity-90 hover:opacity-100"
+              >
+                <Linkedin className="w-4 h-4 mr-1" /> LinkedIn
               </a>
-            </Button>
-
-            <a
-              href={profile.github}
-              className="inline-flex items-center text-sm opacity-80 hover:opacity-100"
-            >
-              <Github className="w-4 h-4 mr-1" />
-              GitHub
-            </a>
-
-            <a
-              href={profile.linkedin}
-              className="inline-flex items-center text-sm opacity-80 hover:opacity-100"
-            >
-              <Linkedin className="w-4 h-4 mr-1" />
-              LinkedIn
-            </a>
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </header>
 
-      {/* STATS */}
+      {/* ───────────── HIGHLIGHTS ───────────── */}
       <Section title="Highlights">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {highlights.map((h) => (
@@ -172,7 +207,7 @@ export default function CalebPortfolio() {
         </div>
       </Section>
 
-      {/* SKILLS */}
+      {/* ───────────── SKILLS ───────────── */}
       <Section title="Core Skills">
         <div className="flex flex-wrap gap-2">
           {skills.map((s) => (
@@ -183,7 +218,7 @@ export default function CalebPortfolio() {
         </div>
       </Section>
 
-      {/* PROJECTS */}
+      {/* ───────────── PROJECTS ───────────── */}
       <Section title="Selected Projects">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((p) => (
@@ -197,7 +232,7 @@ export default function CalebPortfolio() {
         </div>
       </Section>
 
-      {/* EXPERIENCE */}
+      {/* ───────────── EXPERIENCE (static sample) ───────────── */}
       <Section title="Experience">
         <Card className="rounded-2xl">
           <CardContent className="p-6">
@@ -219,7 +254,7 @@ export default function CalebPortfolio() {
         </Card>
       </Section>
 
-      {/* FOOTER */}
+      {/* ───────────── FOOTER ───────────── */}
       <footer className="max-w-6xl mx-auto px-4 md:px-8 py-12 opacity-70 text-sm">
         <p>&copy; {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
       </footer>

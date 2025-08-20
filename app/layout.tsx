@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     "Caleb Carpenter",
   ],
   authors: [{ name: "Caleb Carpenter" }],
-  icons: [
-    { rel: "icon", url: "/favicon.ico" }, // fallback
-    { rel: "icon", url: "/tablogo.png?v=2", type: "image/png" }, // CMSC logo
-    { rel: "shortcut icon", url: "/favicon.ico" },
+  icons: [ 
+    { url: "/tablogo.png", type: "image/png", sizes: "32x32" },
+    { url: "/tablogo.png", type: "image/png", sizes: "192x192" },
+    { url: "/tablogo.png", type: "image/png", sizes: "512x512" },
   ],
   openGraph: {
     title: "Caleb Carpenter Portfolio",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Caleb Carpenter Portfolio",
     images: [
       {
-        url: "/og-image.png", // put in /public if you want previews on LinkedIn/Twitter
+        url: "/og-image.png", 
         width: 1200,
         height: 630,
         alt: "Caleb Carpenter Portfolio preview",

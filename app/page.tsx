@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-// data (already in your repo)
+// data
 import { profile } from "./data/profile";
 import { highlights } from "./data/highlights";
 import { skills } from "./data/skills";
@@ -109,28 +109,26 @@ export default function Page() {
     <main className="text-slate-900">
       {/* ───────────── HERO ───────────── */}
       <header
-        className={`relative h-[56vh] md:h-[68vh] lg:h-[76vh] text-white overflow-hidden ${
-          HERO_BACKGROUND === "color"
-            ? "bg-gradient-to-r from-slate-900 to-indigo-900"
-            : ""
+        className={`relative h-[64vh] md:h-[72vh] lg:h-[80vh] text-white overflow-hidden ${
+          HERO_BACKGROUND === "color" ? "bg-gradient-to-r from-slate-900 to-indigo-900" : ""
         }`}
       >
         {HERO_BACKGROUND === "image" && (
           <>
             <Image
               src="/hero-bg.jpg"
-              alt="Background"
+              alt="" // decorative background
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center"
+              className="object-cover object-[50%_40%]" // keep mountains centered on mobile
             />
-            {/* overlay sits BELOW content */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/55 to-transparent z-0" />
+            {/* overlay below content */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/35 to-black/60" />
           </>
         )}
 
-        {/* hero content sits ABOVE overlay */}
+        {/* hero content above overlay */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-8 pt-28 pb-10">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/25 text-xs mb-4 bg-white/10 backdrop-blur-sm">
@@ -176,7 +174,8 @@ export default function Page() {
                 href={profile.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-sm opacity-90 hover:opacity-100"
+                aria-label="View my GitHub profile"
+                className="inline-flex items-center text-sm opacity-90 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-md"
               >
                 <Github className="w-4 h-4 mr-1" /> GitHub
               </a>
@@ -185,7 +184,8 @@ export default function Page() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-sm opacity-90 hover:opacity-100"
+                aria-label="View my LinkedIn profile"
+                className="inline-flex items-center text-sm opacity-90 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-md"
               >
                 <Linkedin className="w-4 h-4 mr-1" /> LinkedIn
               </a>
@@ -226,13 +226,13 @@ export default function Page() {
           ))}
         </div>
         <div className="mt-6 text-right">
-          <a href="#" className="inline-flex items-center text-sm font-medium">
+          <a href="/projects" className="inline-flex items-center text-sm font-medium">
             See all projects <ArrowRight className="w-4 h-4 ml-1" />
           </a>
         </div>
       </Section>
 
-      {/* ───────────── EXPERIENCE (static sample) ───────────── */}
+      {/* ───────────── EXPERIENCE ───────────── */}
       <Section title="Experience">
         <Card className="rounded-2xl">
           <CardContent className="p-6">
@@ -256,7 +256,9 @@ export default function Page() {
 
       {/* ───────────── FOOTER ───────────── */}
       <footer className="max-w-6xl mx-auto px-4 md:px-8 py-12 opacity-70 text-sm">
-        <p>&copy; {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+        <p>
+          &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
+        </p>
       </footer>
     </main>
   );

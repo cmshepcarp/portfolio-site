@@ -1,10 +1,14 @@
-import type { MetadataRoute } from "next";
-
-const BASE = process.env.NEXT_PUBLIC_SITE_URL1 || "http://localhost:3000";
+import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: "*", allow: "/" }],
-    sitemap: `${BASE}/sitemap.xml`,
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+      },
+    ],
+    sitemap: "https://calebcarpenter.com/sitemap.xml",
+    host: "https://calebcarpenter.com",
   };
 }

@@ -1,11 +1,18 @@
-import type { MetadataRoute } from "next";
-
-const BASE = process.env.NEXT_PUBLIC_SITE_URL1 || "http://localhost:3000";
+import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    { url: `${BASE}/`, lastModified: new Date(), changeFrequency: "monthly", priority: 1 },
-    { url: `${BASE}/projects`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    // If you have project slugs, list them dynamically later.
+    {
+      url: "https://calebcarpenter.com",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 1,
+    },
+    {
+      url: "https://calebcarpenter.com/projects",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
 }

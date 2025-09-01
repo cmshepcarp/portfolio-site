@@ -247,24 +247,73 @@ export default function Page() {
           </a>
         </div>
       </Section>
+{/* ───────────── EXPERIENCE (SafeNest) ───────────── */}
+<Section title="Experience">
+  <Card className="rounded-2xl shadow-md border border-gray-200 bg-white/70 backdrop-blur">
+    <CardContent className="p-6 space-y-4">
+      <div>
+        <h3 className="text-2xl font-bold text-gray-900">
+          SafeNest, Data Integrity Specialist
+        </h3>
+        <p className="text-sm text-gray-600">
+          Oct 2022 to Present, Las Vegas, NV
+        </p>
+      </div>
 
-      {/* ───────────── EXPERIENCE (sample) ───────────── */}
-      <Section title="Experience">
-        <Card className="rounded-2xl">
-          <CardContent className="p-6">
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold">SafeNest — Data Integrity Specialist</h3>
-              <p className="opacity-80 text-sm">Oct 2022 – Present, Las Vegas, NV</p>
-              <ul className="list-disc pl-5 space-y-1 text-sm">
-                <li>Developed IT asset tracking system using Microsoft Lists, SharePoint, and Power Apps.</li>
-                <li>Reduced quarterly reporting time from 140 to 80 hours by refactoring incident reports.</li>
-                <li>Built automated ticketing for finance with notifications and oversight.</li>
-                <li>Created ETL dashboards integrating SQL pipelines with Power BI.</li>
-              </ul>
-            </div>
-          </CardContent>
-        </Card>
-      </Section>
+      <p className="text-base leading-relaxed text-gray-800">
+        Safeguard data quality and design reporting systems for Nevada’s largest
+        domestic violence services nonprofit. Develop specialized reporting,
+        automate workflows, and strengthen data-driven decision making across
+        departments and executive leadership.
+      </p>
+
+      <ul className="list-disc pl-6 space-y-2 text-sm text-gray-700">
+  <li>
+    <strong>Quarterly Reports:</strong> Streamlined reporting by{" "}
+    <em>tagging data in the CRM, defining standardized data categories,
+    and building specialized reports</em>, enabling leadership to submit
+    accurate grant data faster and with greater confidence.
+  </li>
+  <li>
+    <strong>Data Governance:</strong> Partnered with staff and leadership
+    to <em>streamline data collection, define shared terms, and establish
+    consistent reporting standards</em>, improving clarity and reducing
+    duplication across departments.
+  </li>
+  <li>
+    <strong>Data Quality:</strong> Ensured data was entered accurately
+    through routine checks, staff guidance, and corrective feedback,
+    strengthening the reliability of organizational reporting.
+  </li>
+  <li>
+    <strong>IT Asset Management:</strong> Built an{" "}
+    <em>asset tracking system</em> in Microsoft Lists, SharePoint, and
+    Power Apps, ensuring devices were traceable and compliant with
+    security standards.
+  </li>
+  <li>
+    <strong>ETL and Dashboards:</strong> Developed{" "}
+    <em>SQL and Power BI dashboards</em> to monitor service delivery and
+    contract KPIs, giving executives real-time visibility into performance.
+  </li>
+  <li>
+    <strong>Data Literacy and Support:</strong> Provide staff training,
+    technical support, and cross-department collaboration to enhance
+    organizational data practices and resilience.
+  </li>
+  <li>
+    <strong>User Support:</strong> Collaborated with a managed service
+    provider (MSP) to deliver responsive IT support to staff, ensuring
+    timely troubleshooting and smooth daily operations.
+  </li>
+</ul>
+
+    </CardContent>
+  </Card>
+</Section>
+
+
+
 
       {/* ───────────── FOOTER ───────────── */}
       <footer className="max-w-6xl mx-auto px-4 md:px-8 py-12 opacity-70 text-sm">

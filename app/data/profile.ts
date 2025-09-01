@@ -4,7 +4,7 @@ export const profile = {
   tagline:
     "I build reliable pipelines, automate reporting, and turn ad-hoc chaos into clean dashboards.",
   email: "caleb@example.com", // TODO: replace
-  github: "https://github.com/cmshepcarp", // TODO: replace
-  linkedin: "www.linkedin.com/in/caleb-shepherd-carpenter-91756316b", // TODO: replace
-  resumeUrl: "/Caleb_Shepherd-Carpenter_Resume.pdf", // put the PDF in /public
+  github: "https://github.com/cmshepcarp",
+  linkedin: "https://www.linkedin.com/in/caleb-shepherd-carpenter-91756316b/",
+  resumeUrl: "/Caleb_Shepherd-Carpenter_Resume.pdf",
 };

@@ -2,6 +2,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 // data
@@ -14,6 +15,7 @@ import { projects } from "./data/projects";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Tooltip } from "@/components/ui/tooltip";
 import {
   Mail,
   Download,
@@ -109,26 +111,26 @@ export default function Page() {
     <main className="text-slate-900">
       {/* ───────────── HERO ───────────── */}
       <header
-        className={`relative h-[64vh] md:h-[72vh] lg:h-[80vh] text-white overflow-hidden ${
-          HERO_BACKGROUND === "color" ? "bg-gradient-to-r from-slate-900 to-indigo-900" : ""
+        className={`relative h-[56vh] md:h-[68vh] lg:h-[76vh] text-white overflow-hidden ${
+          HERO_BACKGROUND === "color"
+            ? "bg-gradient-to-r from-slate-900 to-indigo-900"
+            : ""
         }`}
       >
         {HERO_BACKGROUND === "image" && (
           <>
             <Image
               src="/hero-bg.jpg"
-              alt="" // decorative background
+              alt="Background"
               fill
               priority
               sizes="100vw"
-              className="object-cover object-[50%_40%]" // keep mountains centered on mobile
+              className="object-cover object-center"
             />
-            {/* overlay below content */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/35 to-black/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/55 to-transparent z-0" />
           </>
         )}
 
-        {/* hero content above overlay */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-8 pt-28 pb-10">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/25 text-xs mb-4 bg-white/10 backdrop-blur-sm">
@@ -174,8 +176,7 @@ export default function Page() {
                 href={profile.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="View my GitHub profile"
-                className="inline-flex items-center text-sm opacity-90 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-md"
+                className="inline-flex items-center text-sm opacity-90 hover:opacity-100"
               >
                 <Github className="w-4 h-4 mr-1" /> GitHub
               </a>
@@ -184,8 +185,7 @@ export default function Page() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="View my LinkedIn profile"
-                className="inline-flex items-center text-sm opacity-90 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-md"
+                className="inline-flex items-center text-sm opacity-90 hover:opacity-100"
               >
                 <Linkedin className="w-4 h-4 mr-1" /> LinkedIn
               </a>
@@ -207,14 +207,30 @@ export default function Page() {
         </div>
       </Section>
 
-      {/* ───────────── SKILLS ───────────── */}
+      {/* ───────────── SKILLS (with readable tooltips) ───────────── */}
       <Section title="Core Skills">
         <div className="flex flex-wrap gap-2">
           {skills.map((s) => (
-            <Badge key={s} variant="outline" className="rounded-full px-3 py-1 text-sm">
-              {s}
-            </Badge>
+            <Tooltip key={s.slug} content={s.blurb}>
+              <Link href={`/skills/${s.slug}`} aria-label={`${s.label} — ${s.blurb}`}>
+                <Badge
+                  variant="outline"
+                  className="rounded-full px-3 py-1 text-sm hover:bg-slate-100 cursor-pointer"
+                >
+                  {s.label}
+                </Badge>
+              </Link>
+            </Tooltip>
           ))}
+        </div>
+
+        <div className="mt-4">
+          <Link
+            href="/skills"
+            className="inline-flex items-center text-sm font-medium hover:underline"
+          >
+            Browse all skills <ArrowRight className="w-4 h-4 ml-1" />
+          </Link>
         </div>
       </Section>
 
@@ -226,13 +242,13 @@ export default function Page() {
           ))}
         </div>
         <div className="mt-6 text-right">
-          <a href="/projects" className="inline-flex items-center text-sm font-medium">
+          <a href="#" className="inline-flex items-center text-sm font-medium">
             See all projects <ArrowRight className="w-4 h-4 ml-1" />
           </a>
         </div>
       </Section>
 
-      {/* ───────────── EXPERIENCE ───────────── */}
+      {/* ───────────── EXPERIENCE (sample) ───────────── */}
       <Section title="Experience">
         <Card className="rounded-2xl">
           <CardContent className="p-6">
@@ -240,12 +256,8 @@ export default function Page() {
               <h3 className="text-xl font-semibold">SafeNest — Data Integrity Specialist</h3>
               <p className="opacity-80 text-sm">Oct 2022 – Present, Las Vegas, NV</p>
               <ul className="list-disc pl-5 space-y-1 text-sm">
-                <li>
-                  Developed IT asset tracking system using Microsoft Lists, SharePoint, and Power Apps.
-                </li>
-                <li>
-                  Reduced quarterly reporting time from 140 to 80 hours by refactoring incident reports.
-                </li>
+                <li>Developed IT asset tracking system using Microsoft Lists, SharePoint, and Power Apps.</li>
+                <li>Reduced quarterly reporting time from 140 to 80 hours by refactoring incident reports.</li>
                 <li>Built automated ticketing for finance with notifications and oversight.</li>
                 <li>Created ETL dashboards integrating SQL pipelines with Power BI.</li>
               </ul>

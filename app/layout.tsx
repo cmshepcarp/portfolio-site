@@ -19,21 +19,6 @@ export const metadata: Metadata = {
     icon: [{ url: "/tablogo.png", type: "image/png", sizes: "32x32" }],
     apple: [{ url: "/tablogo.png" }],
   },
-  openGraph: {
-    title: "Caleb Shepherd-Carpenter Portfolio",
-    description: "IT support, data analysis, reporting, and automation.",
-    url: "/",
-    siteName: "Caleb Shepherd-Carpenter Portfolio",
-    images: [
-      {
-        url: "/hero-bg.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Caleb Shepherd-Carpenter portfolio preview",
-      },
-    ],
-  },
-  twitter: null,
   alternates: {
     canonical: "/",
   },

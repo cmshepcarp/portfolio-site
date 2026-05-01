@@ -1,4 +1,3 @@
-// app/not-found.tsx
 import Link from "next/link";
 
 export default function NotFound() {
@@ -6,7 +5,7 @@ export default function NotFound() {
     <main className="mx-auto max-w-3xl px-4 py-20 text-center">
       <h1 className="text-3xl font-semibold mb-2">404: This page could not be found</h1>
       <p className="text-slate-600 mb-6">
-        The page you’re looking for doesn’t exist or has moved.
+        The page you&apos;re looking for doesn&apos;t exist or has moved.
       </p>
       <Link
         href="/"

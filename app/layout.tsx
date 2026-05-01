@@ -12,9 +12,18 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://calebcarpenter.com
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Caleb Shepherd-Carpenter Portfolio",
+  title: "Caleb Carpenter | Data & IT Support Analyst",
   description:
-    "IT support, data analysis, reporting, automation, and selected project work from Caleb Shepherd-Carpenter.",
+    "Portfolio for Caleb Carpenter, a Las Vegas data and IT support analyst focused on reporting, automation, Power Platform, and user-first systems support.",
+  keywords: [
+    "Caleb Carpenter",
+    "Caleb Shepherd-Carpenter",
+    "data analyst",
+    "IT support analyst",
+    "Power BI",
+    "Power Automate",
+    "Las Vegas analyst",
+  ],
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png", sizes: "1024x1024" }],
     apple: [{ url: "/favicon.png" }],
@@ -28,6 +37,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: profile.name,
+  alternateName: "Caleb Carpenter",
   jobTitle: profile.title,
   url: SITE_URL,
   email: `mailto:${profile.email}`,

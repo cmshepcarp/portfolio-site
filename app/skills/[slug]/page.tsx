@@ -267,6 +267,34 @@ const skillDetails: Record<string, SkillDetail> = {
     strengths: ["cloud fundamentals", "permissions", "hosted data", "deployment awareness"],
     tools: ["Azure", "AWS", "Vercel", "SharePoint", "cloud databases"],
   },
+  leadership: {
+    overview:
+      "Leadership is part of how I work: keeping people organized, making expectations clear, and staying calm when operations are busy.",
+    officeUse:
+      "In analyst and support roles, leadership shows up in scheduling, training, escalation, safety-minded decision-making, and helping teams adopt cleaner processes without losing momentum.",
+    examples: [
+      "Managed scheduling and resource allocation for City of Las Vegas aquatic staff.",
+      "Oversaw facility maintenance and safety compliance as a pool manager.",
+      "Trained staff on lifesaving techniques, operating procedures, and readiness expectations.",
+      "Coordinated delivery, setup, equipment readiness, and customer-facing event work at A Bounce Above the Rest.",
+    ],
+    strengths: ["team scheduling", "training", "operations coordination", "calm decision-making"],
+    tools: ["Staff training", "Scheduling", "Safety procedures", "Customer service", "Operations checklists"],
+  },
+  communication: {
+    overview:
+      "Communication is a practical skill I have built through public-facing work, staff training, customer service, and cross-functional support.",
+    officeUse:
+      "In technical and operations work, clear communication helps users understand next steps, gives leaders reliable updates, and makes process changes easier for staff to adopt.",
+    examples: [
+      "Taught swim lessons and water safety as a certified Red Cross instructor.",
+      "Explained safety procedures and expectations clearly to staff and the public.",
+      "Provided customer service during field operations and event setup work.",
+      "Translated technical or process issues into clear next steps for staff, volunteers, and service providers.",
+    ],
+    strengths: ["staff training", "plain-language updates", "customer service", "cross-team coordination"],
+    tools: ["Training", "Documentation", "Email updates", "Customer support", "Team handoffs"],
+  },
 };
 
 export function generateStaticParams() {

@@ -130,6 +130,10 @@ const technicalSkillGroups = [
     label: "IT support",
     items: ["Network troubleshooting", "Asset tracking", "Staff training"],
   },
+  {
+    label: "Leadership and communication",
+    items: ["Team scheduling", "Safety oversight", "Customer service", "Training"],
+  },
 ];
 
 function Section({
@@ -377,8 +381,8 @@ export default function Page() {
             </p>
             <p className="mt-2 max-w-3xl text-lg leading-8 text-slate-700">
               Analyst experience across IT support, Microsoft Power Platform, incident reporting,
-              grant compliance, data visualization, network troubleshooting, and nonprofit
-              operations data. {profile.education}
+              grant compliance, data visualization, network troubleshooting, staff training,
+              team leadership, and nonprofit operations data. {profile.education}
             </p>
           </div>
           <Button asChild className="h-11 w-fit rounded-md bg-slate-950 px-5 text-white hover:bg-teal-700">

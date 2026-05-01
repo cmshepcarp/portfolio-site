@@ -20,4 +20,6 @@ export const skills = [
   { label: "Data Cleaning", slug: "data-cleaning", blurb: "Handling missing values, outliers, consistency." },
   { label: "Version Control", slug: "version-control", blurb: "Git, branching, collaboration." },
   { label: "Cloud Platforms", slug: "cloud-platforms", blurb: "AWS, Azure basics for data solutions." },
+  { label: "Leadership", slug: "leadership", blurb: "Scheduling, safety oversight, training, and field operations." },
+  { label: "Communication", slug: "communication", blurb: "Clear updates, customer service, training, and team coordination." },
 ];

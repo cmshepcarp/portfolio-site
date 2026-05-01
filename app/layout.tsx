@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   description:
     "IT support, data analysis, reporting, automation, and selected project work from Caleb Shepherd-Carpenter.",
   icons: {
-    icon: [{ url: "/tablogo.png", type: "image/png", sizes: "32x32" }],
-    apple: [{ url: "/tablogo.png" }],
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "1024x1024" }],
+    apple: [{ url: "/favicon.png" }],
   },
   alternates: {
     canonical: "/",

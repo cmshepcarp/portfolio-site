@@ -12,9 +12,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://calebcarpenter.com
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Caleb Carpenter | Operations Analyst & Data Analytics",
+  title: {
+    default: "Caleb Shepherd-Carpenter | Las Vegas Operations & Data Analyst",
+    template: "%s | Caleb Shepherd-Carpenter",
+  },
   description:
-    "Portfolio for Caleb Shepherd-Carpenter, a Las Vegas operations analyst focused on data quality, business intelligence, reporting, and workflow automation.",
+    "Caleb Shepherd-Carpenter is a Las Vegas operations analyst focused on SQL, Python, Power BI, data integrity, business intelligence, and reporting automation.",
   keywords: [
     "Caleb Carpenter",
     "Caleb Shepherd-Carpenter",
@@ -23,14 +26,24 @@ export const metadata: Metadata = {
     "Power BI",
     "Power Automate",
     "Las Vegas analyst",
+    "Las Vegas data analyst",
+    "Nevada operations analyst",
   ],
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png", sizes: "1024x1024" }],
     apple: [{ url: "/favicon.png" }],
   },
-  alternates: {
-    canonical: "/",
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "profile",
+    url: SITE_URL,
+    siteName: "Caleb Shepherd-Carpenter Portfolio",
+    title: "Caleb Shepherd-Carpenter | Las Vegas Operations & Data Analyst",
+    description: "Operations analysis, reporting, SQL, Python, Power BI, and data integrity in Las Vegas, Nevada.",
+    locale: "en_US",
   },
+  twitter: { card: "summary", title: "Caleb Shepherd-Carpenter | Las Vegas Data Analyst" },
 };
 
 const personJsonLd = {
@@ -38,7 +51,10 @@ const personJsonLd = {
   "@type": "Person",
   name: profile.name,
   alternateName: "Caleb Carpenter",
-  jobTitle: profile.title,
+  jobTitle: "Operations Analyst",
+  description: "Las Vegas-based operations analyst working with SQL, Python, Power BI, reporting, and data quality.",
+  knowsAbout: ["Operations analysis", "SQL", "Python", "Power BI", "Data integrity", "Business intelligence", "Reporting automation"],
+  homeLocation: { "@type": "Place", name: "Las Vegas, Nevada, United States" },
   url: SITE_URL,
   email: `mailto:${profile.email}`,
   sameAs: [profile.github, profile.linkedin],

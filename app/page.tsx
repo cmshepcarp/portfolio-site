@@ -69,7 +69,7 @@ const resumeExperience = [
       "Owned reporting, data quality, systems support, and workflow improvements for Nevada's largest domestic violence services nonprofit.",
     bullets: [
       "Designed and implemented an IT asset tracking system using Microsoft Lists, SharePoint, and Power Apps.",
-      "Reduced quarterly reporting time from 140 hours to 80 hours by optimizing workflows and automating data aggregation.",
+      "Improved quarterly reporting efficiency by streamlining workflows and automating data aggregation.",
       "Refactored incident reporting processes to support trend analysis and more informed decision-making.",
       "Developed grant reporting systems to meet compliance requirements and improve reporting efficiency.",
       "Provided staff and volunteer training on data management, operational tools, and reporting practices.",

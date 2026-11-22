@@ -60,9 +60,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/skills" className="rounded-md px-2 py-2 text-slate-700 transition hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 sm:px-3">
                 Skills
               </Link>
-              <a href={profile.resumeUrl} className="rounded-md px-3 py-2 text-slate-700 transition hover:bg-slate-100 hover:text-slate-950">
-                Resume
-              </a>
               <a
                 href={`mailto:${profile.email}`}
                 className="rounded-md bg-slate-950 px-2 py-2 text-white shadow-sm transition hover:bg-teal-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 sm:px-3"

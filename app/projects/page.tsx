@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { projects } from "../data/projects";
+
+export const metadata: Metadata = {
+  title: "Data Analytics & Automation Projects",
+  description: "SQL, Python, Power BI, ETL and automation projects by Las Vegas operations analyst Caleb Shepherd-Carpenter.",
+  alternates: { canonical: "/projects" },
+};
 
 export default function ProjectsPage() {
   return (
@@ -18,7 +25,7 @@ export default function ProjectsPage() {
         {projects.map((project) => (
           <Card key={project.slug} className="rounded-lg border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
             <CardContent className="p-6">
-              <h2 className="text-xl font-semibold mb-2">{project.title}</h2>
+              <h2 id={project.slug} className="text-xl font-semibold mb-2">{project.title}</h2>
               <p className="text-sm text-slate-700 mb-4">{project.impact}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (

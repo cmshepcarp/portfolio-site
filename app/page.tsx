@@ -50,6 +50,18 @@ const strengths = [
 
 const resumeExperience = [
   {
+    role: "Operations Analyst",
+    organization: "Station Casinos",
+    dates: "Oct 2026 to Present",
+    summary:
+      "Support property operations through financial reporting, data analysis, and recurring performance reviews.",
+    bullets: [
+      "Analyze operational and general ledger data to support reporting and business decisions.",
+      "Work with Excel, Cognos, and Power BI to prepare and review property reports.",
+      "Investigate data discrepancies and improve the reliability of recurring reports.",
+    ],
+  },
+  {
     role: "Data Integrity Analyst",
     organization: "SafeNest",
     dates: "Oct 2022 to Mar 2026",

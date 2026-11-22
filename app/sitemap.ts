@@ -1,43 +1,19 @@
-import { MetadataRoute } from "next";
-import { projects } from "./data/projects";
+import type { MetadataRoute } from "next";
 import { skills } from "./data/skills";
 
+const SITE_URL = "https://calebcarpenter.com";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  const staticRoutes: MetadataRoute.Sitemap = [
-    {
-      url: "https://calebcarpenter.com",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: "https://calebcarpenter.com/projects",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: "https://calebcarpenter.com/skills",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+  const pages = [
+    { path: "", priority: 1 },
+    { path: "/projects", priority: 0.8 },
+    { path: "/skills", priority: 0.8 },
+    ...skills.map((skill) => ({ path: "/skills/" + skill.slug, priority: 0.5 })),
   ];
 
-  const projectRoutes = projects.map((project) => ({
-    url: `https://calebcarpenter.com/projects#${project.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
+  return pages.map(({ path, priority }) => ({
+    url: SITE_URL + path,
+    changeFrequency: "monthly",
+    priority,
   }));
-
-  const skillRoutes = skills.map((skill) => ({
-    url: `https://calebcarpenter.com/skills/${skill.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
-
-  return [...staticRoutes, ...projectRoutes, ...skillRoutes];
 }

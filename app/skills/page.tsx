@@ -1,9 +1,14 @@
-"use client";
-
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip } from "@/components/ui/tooltip";
 import { skills } from "../data/skills";
+
+export const metadata: Metadata = {
+  title: "Analyst Skills | SQL, Python, Power BI & Reporting",
+  description: "Practical skills in SQL, Python, Power BI, Excel, data quality, ETL, dashboards, and automation from a Las Vegas analyst.",
+  alternates: { canonical: "/skills" },
+};
 
 export default function SkillsIndexPage() {
   return (

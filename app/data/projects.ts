@@ -16,7 +16,7 @@ export const projects = [
     slug: "crm-etl-python-sql-powerbi",
     title: "CRM to SQL to Power BI: Weekly ETL + QA",
     impact:
-      "Reduced quarterly reporting time from 140 to 80 hours by optimizing workflows and automating data aggregation.",
+      "Improved quarterly reporting efficiency by streamlining workflows and automating data aggregation.",
     tags: ["Python", "SQL", "Power BI", "ETL", "Automation"],
     bullets: [
       "Built robust API client with retries and date partitioning",

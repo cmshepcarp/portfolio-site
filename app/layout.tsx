@@ -12,14 +12,14 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://calebcarpenter.com
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Caleb Carpenter | Data & IT Support Analyst",
+  title: "Caleb Carpenter | Operations Analyst & Data Analytics",
   description:
-    "Portfolio for Caleb Carpenter, a Las Vegas data and IT support analyst focused on reporting, automation, Power Platform, and user-first systems support.",
+    "Portfolio for Caleb Shepherd-Carpenter, a Las Vegas operations analyst focused on data quality, business intelligence, reporting, and workflow automation.",
   keywords: [
     "Caleb Carpenter",
     "Caleb Shepherd-Carpenter",
     "data analyst",
-    "IT support analyst",
+    "operations analyst",
     "Power BI",
     "Power Automate",
     "Las Vegas analyst",
@@ -49,20 +49,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="h-full">
       <body className={`${inter.className} min-h-screen bg-[#f7f8f4] text-slate-900 antialiased`}>
         <header className="sticky top-0 z-40 px-3 py-3">
-          <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between rounded-lg border border-white/70 bg-white/85 px-4 shadow-[0_18px_60px_rgba(15,23,42,0.12)] backdrop-blur-xl md:px-5">
+          <nav aria-label="Primary navigation" className="mx-auto flex min-h-14 max-w-6xl flex-wrap items-center justify-between gap-2 rounded-lg border border-white/70 bg-white/90 px-3 py-2 shadow-[0_12px_40px_rgba(15,23,42,0.09)] backdrop-blur-xl sm:flex-nowrap sm:px-5">
             <Link href="/" className="font-semibold text-slate-950">
               Caleb Carpenter
             </Link>
-            <div className="flex items-center gap-2 text-sm">
-              <Link href="/projects" className="rounded-md px-3 py-2 text-slate-700 transition hover:bg-slate-100 hover:text-slate-950">
+            <div className="flex flex-wrap items-center gap-1 text-sm sm:gap-2">
+              <Link href="/projects" className="rounded-md px-2 py-2 text-slate-700 transition hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 sm:px-3">
                 Projects
               </Link>
-              <a href={profile.resumeUrl} className="rounded-md px-3 py-2 text-slate-700 transition hover:bg-slate-100 hover:text-slate-950">
-                Resume
-              </a>
+              <Link href="/skills" className="rounded-md px-2 py-2 text-slate-700 transition hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 sm:px-3">
+                Skills
+              </Link>
               <a
                 href={`mailto:${profile.email}`}
-                className="rounded-md bg-slate-950 px-3 py-2 text-white shadow-sm transition hover:bg-teal-700"
+                className="rounded-md bg-slate-950 px-2 py-2 text-white shadow-sm transition hover:bg-teal-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 sm:px-3"
               >
                 Email me
               </a>

@@ -9,7 +9,6 @@ import {
   BriefcaseBusiness,
   CheckCircle2,
   Database,
-  Download,
   ExternalLink,
   Github,
   Headphones,
@@ -25,39 +24,50 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tooltip } from "@/components/ui/tooltip";
-import { highlights } from "./data/highlights";
 import { profile } from "./data/profile";
 import { projects } from "./data/projects";
 import { skills } from "./data/skills";
 
 const strengths = [
   {
-    title: "User-first IT support",
-    copy: "Clear troubleshooting, calm communication, staff training, and practical escalation with remote service providers.",
+    title: "Data integrity & systems",
+    copy: "Maintain reliable data, support reporting systems, and resolve issues affecting daily operations.",
     icon: Headphones,
   },
   {
-    title: "Analyst-minded reporting",
-    copy: "Trend analysis, grant compliance reporting, quality checks, and cleaner operational data for leadership decisions.",
+    title: "Operational reporting",
+    copy: "Prepare recurring reports, review trends, and investigate discrepancies for operational decision-making.",
     icon: ShieldCheck,
   },
   {
-    title: "Automation that sticks",
-    copy: "Microsoft Lists, SharePoint, Power Apps, Power Automate, Python, and SQL workflows built for repeat use.",
+    title: "Reliable automation",
+    copy: "Build repeatable workflows using Python, SQL, Power BI, and Microsoft Power Platform.",
     icon: Workflow,
   },
 ];
 
 const resumeExperience = [
   {
+    role: "Operations Analyst",
+    organization: "Station Casinos",
+    dates: "Oct 2026 to Present",
+    summary:
+      "Support property operations through financial reporting, data analysis, and recurring performance reviews.",
+    bullets: [
+      "Analyze operational and general ledger data to support reporting and business decisions.",
+      "Work with Excel, Cognos, and Power BI to prepare and review property reports.",
+      "Investigate data discrepancies and improve the reliability of recurring reports.",
+    ],
+  },
+  {
     role: "Data Integrity Analyst",
     organization: "SafeNest",
-    dates: "Oct 2022 to Apr 2026",
+    dates: "Oct 2022 to Mar 2026",
     summary:
       "Owned reporting, data quality, systems support, and workflow improvements for Nevada's largest domestic violence services nonprofit.",
     bullets: [
       "Designed and implemented an IT asset tracking system using Microsoft Lists, SharePoint, and Power Apps.",
-      "Reduced quarterly reporting time from 140 hours to 80 hours by optimizing workflows and automating data aggregation.",
+      "Improved quarterly reporting efficiency by streamlining workflows and automating data aggregation.",
       "Refactored incident reporting processes to support trend analysis and more informed decision-making.",
       "Developed grant reporting systems to meet compliance requirements and improve reporting efficiency.",
       "Provided staff and volunteer training on data management, operational tools, and reporting practices.",
@@ -160,15 +170,6 @@ function Section({
   );
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="border-l border-slate-200 pl-5">
-      <div className="text-3xl font-semibold text-slate-950 md:text-4xl">{value}</div>
-      <div className="mt-1 text-sm text-slate-600">{label}</div>
-    </div>
-  );
-}
-
 function ProjectCard({ project }: { project: (typeof projects)[number] }) {
   return (
     <motion.div
@@ -220,21 +221,20 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
 
 export default function Page() {
   return (
-    <main className="overflow-hidden bg-[#f7f8f4] text-slate-900">
-      <header className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
+    <main className="overflow-hidden bg-white text-slate-900">
+      <header className="relative overflow-hidden bg-slate-950 text-white">
         <Image
           src="/hero-bg.jpg"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-45"
+          className="object-cover object-center opacity-15"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.96),rgba(19,78,74,0.82)_48%,rgba(15,23,42,0.26))]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/95 to-teal-950/85" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_35%,rgba(255,255,255,0.14),transparent_32%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f7f8f4] to-transparent" />
 
-        <div className="relative z-10 mx-auto grid min-h-screen max-w-6xl items-center gap-10 px-4 pb-20 pt-28 md:grid-cols-[1.05fr_0.95fr] md:px-8">
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 pb-20 pt-20 md:grid-cols-[1.05fr_0.95fr] md:px-8 md:pb-24 md:pt-28">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             <div className="mb-5 flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-md border border-emerald-300/30 bg-emerald-300/10 px-3 py-1.5 text-xs font-medium text-emerald-100">
@@ -262,17 +262,6 @@ export default function Page() {
                 <a href={`mailto:${profile.email}`}>
                   <Mail className="mr-2 h-4 w-4" />
                   Contact me
-                </a>
-              </Button>
-
-              <Button
-                asChild
-                variant="secondary"
-                className="h-11 rounded-md border border-white/20 bg-white px-5 text-slate-950 hover:bg-cyan-50"
-              >
-                <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer">
-                  <Download className="mr-2 h-4 w-4" />
-                  Current resume
                 </a>
               </Button>
 
@@ -304,8 +293,8 @@ export default function Page() {
             <div className="rounded-md border border-white/10 bg-slate-950/50 p-4">
               <div className="mb-5 flex items-center justify-between gap-4 border-b border-white/15 pb-4">
                 <div>
-                  <p className="text-sm font-medium text-white">Best fit roles</p>
-                  <p className="text-xs text-slate-300">Immediate search focus</p>
+                  <p className="text-sm font-medium text-white">Areas of focus</p>
+                  <p className="text-xs text-slate-300">What I work on</p>
                 </div>
                 <BriefcaseBusiness className="h-5 w-5 text-amber-200" />
               </div>
@@ -346,56 +335,44 @@ export default function Page() {
         </div>
       </header>
 
-      <Section eyebrow="Proof points" title="A practical operator who can support people and improve systems.">
-        <div className="grid gap-6 md:grid-cols-[0.85fr_1.15fr]">
-          <div className="grid gap-5 rounded-lg border border-slate-200 bg-white p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] sm:grid-cols-3 md:grid-cols-1">
-            {highlights.map((highlight) => (
-              <Stat key={highlight.label} label={highlight.label} value={highlight.value} />
-            ))}
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {strengths.map((strength) => {
-              const Icon = strength.icon;
-              return (
-                <Card key={strength.title} className="rounded-lg border-slate-200 shadow-sm">
-                  <CardContent className="p-5">
-                    <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-amber-100 text-amber-800">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h3 className="font-semibold text-slate-950">{strength.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">{strength.copy}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+      <Section eyebrow="What I do" title="Reliable data, clear reporting, practical systems.">
+        <div className="grid gap-4 md:grid-cols-3">
+          {strengths.map((strength) => {
+            const Icon = strength.icon;
+            return (
+              <Card key={strength.title} className="rounded-lg border-slate-200 bg-white shadow-sm">
+                <CardContent className="p-6">
+                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-teal-50 text-teal-800">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-semibold text-slate-950">{strength.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{strength.copy}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </Section>
+
+      
 
       <section className="border-y border-slate-200 bg-white py-10">
         <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 md:flex-row md:items-center md:justify-between md:px-8">
           <div>
             <p className="text-sm font-semibold uppercase text-teal-700">
-              Recruiter quick read
+              About my work
             </p>
             <p className="mt-2 max-w-3xl text-lg leading-8 text-slate-700">
-              Analyst experience across IT support, Microsoft Power Platform, incident reporting,
-              grant compliance, data visualization, network troubleshooting, staff training,
-              team leadership, and nonprofit operations data. {profile.education}
+              Operations analyst with experience in data quality, Power BI, Python, SQL,
+              process automation, compliance reporting, and cross-team systems support. {profile.education}
             </p>
           </div>
-          <Button asChild className="h-11 w-fit rounded-md bg-slate-950 px-5 text-white hover:bg-teal-700">
-            <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer">
-              <Download className="mr-2 h-4 w-4" />
-              View resume
-            </a>
-          </Button>
+          <Link href="/projects" className="inline-flex h-11 items-center rounded-md bg-slate-950 px-5 text-sm font-medium text-white hover:bg-teal-700">Explore projects <ArrowRight className="ml-2 h-4 w-4" /></Link>
         </div>
       </section>
 
       <section className="bg-[#eef7f3]">
-        <Section eyebrow="Core skills" title="Tools and habits I bring into support, reporting, and systems work.">
+        <Section eyebrow="Core skills" title="Tools I use for reporting, automation, and systems work.">
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
             <Tooltip key={skill.slug} content={skill.blurb}>
@@ -420,7 +397,7 @@ export default function Page() {
         </Section>
       </section>
 
-      <Section eyebrow="Education and technical toolkit" title="Building from hands-on office systems into computer science and data science.">
+      <Section eyebrow="Education and technical toolkit" title="Connecting practical analytics with computer science and data science.">
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="space-y-4">
             {educationItems.map((item) => (
@@ -514,10 +491,10 @@ export default function Page() {
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-sm font-semibold uppercase text-teal-100">
-                Open to interviews
+                Get in touch
               </p>
               <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
-                Need someone who can support users and make the data less painful?
+                Interested in data, reporting, or systems work? Let’s connect.
               </h2>
             </div>
             <div className="flex flex-wrap gap-3">

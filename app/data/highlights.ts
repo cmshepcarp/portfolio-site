@@ -1,5 +1,5 @@
 export const highlights = [
-  { label: "Hours saved/quarter", value: "60+" },
-  { label: "Dashboards delivered", value: "10+" },
-  { label: "Reporting hours reduced", value: "43%" },
+  { label: "Reporting", value: "Clear insights" },
+  { label: "Data quality", value: "Reliable data" },
+  { label: "Automation", value: "Better workflows" },
 ];

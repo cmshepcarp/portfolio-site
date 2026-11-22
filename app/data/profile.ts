@@ -10,7 +10,6 @@ export const profile = {
   email: "cmshepcarp@gmail.com",
   github: "https://github.com/cmshepcarp",
   linkedin: "https://www.linkedin.com/in/caleb-shepherd-carpenter-91756316b/",
-  resumeUrl: "/caleb-carpenter-resume.pdf",
   targetRoles: [
     "Operations Analytics",
     "Business Intelligence",

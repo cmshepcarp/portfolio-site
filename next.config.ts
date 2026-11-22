@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const securityHeaders = [
   {
+    key: "Content-Security-Policy",
+    value: "object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+  },
+  {
     key: "Strict-Transport-Security",
     value: "max-age=63072000; includeSubDomains; preload",
   },

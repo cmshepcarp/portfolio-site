@@ -32,17 +32,17 @@ import { skills } from "./data/skills";
 
 const strengths = [
   {
-    title: "User-first IT support",
+    title: "Practical systems support",
     copy: "Clear troubleshooting, calm communication, staff training, and practical escalation with remote service providers.",
     icon: Headphones,
   },
   {
-    title: "Analyst-minded reporting",
+    title: "Operational reporting",
     copy: "Trend analysis, grant compliance reporting, quality checks, and cleaner operational data for leadership decisions.",
     icon: ShieldCheck,
   },
   {
-    title: "Automation that sticks",
+    title: "Reliable automation",
     copy: "Microsoft Lists, SharePoint, Power Apps, Power Automate, Python, and SQL workflows built for repeat use.",
     icon: Workflow,
   },
@@ -52,7 +52,7 @@ const resumeExperience = [
   {
     role: "Data Integrity Analyst",
     organization: "SafeNest",
-    dates: "Oct 2022 to Apr 2026",
+    dates: "Oct 2022 to Mar 2026",
     summary:
       "Owned reporting, data quality, systems support, and workflow improvements for Nevada's largest domestic violence services nonprofit.",
     bullets: [
@@ -272,7 +272,7 @@ export default function Page() {
               >
                 <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 h-4 w-4" />
-                  Current resume
+                  View resume
                 </a>
               </Button>
 
@@ -304,8 +304,8 @@ export default function Page() {
             <div className="rounded-md border border-white/10 bg-slate-950/50 p-4">
               <div className="mb-5 flex items-center justify-between gap-4 border-b border-white/15 pb-4">
                 <div>
-                  <p className="text-sm font-medium text-white">Best fit roles</p>
-                  <p className="text-xs text-slate-300">Immediate search focus</p>
+                  <p className="text-sm font-medium text-white">Areas of focus</p>
+                  <p className="text-xs text-slate-300">What I work on</p>
                 </div>
                 <BriefcaseBusiness className="h-5 w-5 text-amber-200" />
               </div>
@@ -346,7 +346,7 @@ export default function Page() {
         </div>
       </header>
 
-      <Section eyebrow="Proof points" title="A practical operator who can support people and improve systems.">
+      <Section eyebrow="Proof points" title="Better data, clearer reporting, and more effective operations.">
         <div className="grid gap-6 md:grid-cols-[0.85fr_1.15fr]">
           <div className="grid gap-5 rounded-lg border border-slate-200 bg-white p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] sm:grid-cols-3 md:grid-cols-1">
             {highlights.map((highlight) => (
@@ -380,9 +380,8 @@ export default function Page() {
               Recruiter quick read
             </p>
             <p className="mt-2 max-w-3xl text-lg leading-8 text-slate-700">
-              Analyst experience across IT support, Microsoft Power Platform, incident reporting,
-              grant compliance, data visualization, network troubleshooting, staff training,
-              team leadership, and nonprofit operations data. {profile.education}
+              Operations analyst with experience in data quality, Power BI, Python, SQL,
+              process automation, compliance reporting, and cross-team systems support. {profile.education}
             </p>
           </div>
           <Button asChild className="h-11 w-fit rounded-md bg-slate-950 px-5 text-white hover:bg-teal-700">
@@ -395,7 +394,7 @@ export default function Page() {
       </section>
 
       <section className="bg-[#eef7f3]">
-        <Section eyebrow="Core skills" title="Tools and habits I bring into support, reporting, and systems work.">
+        <Section eyebrow="Core skills" title="Tools I use for reporting, automation, and systems work.">
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
             <Tooltip key={skill.slug} content={skill.blurb}>
@@ -420,7 +419,7 @@ export default function Page() {
         </Section>
       </section>
 
-      <Section eyebrow="Education and technical toolkit" title="Building from hands-on office systems into computer science and data science.">
+      <Section eyebrow="Education and technical toolkit" title="Connecting practical analytics with computer science and data science.">
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="space-y-4">
             {educationItems.map((item) => (
